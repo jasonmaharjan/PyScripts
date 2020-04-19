@@ -15,7 +15,6 @@ def password_hack_count(hashes, hash_to_check):                                 
    hashes = (line.split(':') for line in hashes.text.splitlines())               # Split into tuple
 
    for h, count in hashes:
-      print (h)
       if h == hash_to_check:
          return count
    return 0                                                                      # Tail hash isn't found

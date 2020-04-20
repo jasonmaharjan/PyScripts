@@ -1,28 +1,30 @@
-# Scrape news-data from Hacker News
+# Command: python scraping.py x y
+# Scrapes x pages from website and shows news having points >= y
 
 import requests
 import pprint
+import sys
 from bs4 import BeautifulSoup
 
-res = requests.get('https://news.ycombinator.com/news')
-res2 = requests.get('https://news.ycombinator.com/news?p=2')
+link_list = []
+subtext_list = []
 
-soup = BeautifulSoup(res.text, 'html.parser')
-soup2 = BeautifulSoup(res2.text, 'html.parser')
+def get_data(max_page_number):
+   for num in range(max_page_number):
+      res = requests.get(f'https://news.ycombinator.com/news?p={num}')
+      soup = BeautifulSoup(res.text, 'html.parser')
+      link = soup.select('.storylink')
+      link_list.append(link)
+      subtext = soup.select('.subtext')
+      subtext_list.append(subtext)
+   
+get_data(int(sys.argv[1]))                      # Number of pages to scrape(User Input)
+get_points = int(sys.argv[2])                   # User Input Points
 
-links = soup.select('.storylink')                            # Uses CSS Selector and returns list
-links2 = soup2.select('.storylink') 
+combined_links = link_list[0]
+combined_subtext = subtext_list[0]
 
-subtext = soup.select('.subtext')
-subtext2 = soup2.select('.subtext')
-
-combined_links = links + links2
-combined_subtext = subtext + subtext2
-
-# print(links[0].getText())
-# print(votes[0].get('id'))
-
-def sorted_news(items):
+def sorted_news(items):                         # Descending Order of points
    return sorted(items, key = lambda k: k['votes'], reverse = True)
 
 def custom_site(links, subtext):
@@ -34,7 +36,7 @@ def custom_site(links, subtext):
       vote = subtext[idx].select('.score')
       if len(vote):
          points = int(vote[0].getText().replace(' points', ''))
-         if points >= 100:
+         if points >= get_points:                # Filter Points
             items.append({'title':title, 'link':href, 'votes': points})
 
    return sorted_news(items)

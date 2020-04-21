@@ -1,7 +1,8 @@
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)         # __name__ is set to __main__
-print(__name__)
 
+# create 'templates' folder for html and 'static' folder for css and js
 @app.route('/')
 def hello_world():
-   return 'Hello World'
+   return render_template('index.html')
+

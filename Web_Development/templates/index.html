@@ -5,21 +5,25 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
 
-      <link rel = "stylesheet" href = "./static/style.css">
-      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-      <title>Python</title>
+      <link rel = "stylesheet" href = "../static/style.css"">
+      <link rel="shortcut icon" href="../static/favicon.ico">
+      <title>ScrapeIT</title>
    </head>
    <body>
       <header class="header">
-         Web Development with Python
-         <div class="header_button">
-            <button class="btn"> 
-               Get Started
-            </button>
-         </div>
+         Web Scraping with Python {{ test }}
       </header>
-      <main>
 
-      </main>
+         <div class="form">
+            <form action="results" method = "POST" class="search">
+               <input name = "pages" type="text" class="search_input" placeholder="Enter number of pages">
+               <button class="search_button">
+                  <svg class="search_icon">
+                     <use xlink:href="../static/assets/images/sprite.svg#icon-magnifying-glass"></use>
+                  </svg>
+               </button>
+            </form>
+         </div>
+      
    </body>
 </html>

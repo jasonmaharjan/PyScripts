@@ -3,6 +3,15 @@
    --color-primary-dark: rgb(28, 1, 63);
    --color-primary-light: rgb(230, 163, 163);
 
+   --color-grey-light-1: #faf9f9;
+   --color-grey-light-2: #f4f2f2;
+   --color-grey-light-3: #f0eeee;
+   --color-grey-light-4: #ccc;
+
+   --color-grey-dark-1: #333;
+   --color-grey-dark-2: #777;
+   --color-grey-dark-3: #999;
+
    --border: 1 px solid rgb(114, 9, 9);
 }
 
@@ -33,37 +42,73 @@ body {
 
 .header {
    font-size: 3.5rem;
-   margin: 2rem;
+   margin: 25rem 0 0 0;
    text-align: center;
    padding: 2.5rem;
    text-transform: uppercase;
    transition: all .2s;
+}
+
+.form {
+   font-size: 2rem;
+   text-align: center;
+}
+
+.search {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   
+   &_input {
+      font-family: inherit;
+      font-size: inherit;
+      color: var(--color-primary-dark);
+      margin-right: -3.75rem;
+      padding: 1.25rem 2rem;
+      width: 18%;
+      border: none;
+      border-radius: 10rem;
+      background-color: var(--color-grey-light-4);
+      transition: all .3s;
+
+      &:focus {
+         width: 19%;
+         outline: none;
+      }
+
+      &::-webkit-input-placeholder {
+         font-weight: 100;
+         color: var(--color-primary-dark);
+      }
+   }
+
+   &_input:focus + &_button:focus {
+      outline: none;
+   }
 
    &_button {
-      display: flex;
-      justify-content: center;
+      background-color: var(--color-grey-light-4);
+      border: none;
+      margin-top: .45rem;
+
+      &:focus {
+         outline: none;
+      }
+
+      &:active {
+         transform: translateY(.4rem);
+      }
+   }
+
+   &_icon {
+      height: 2.5rem;
+      width: 2.5rem;
+      fill: var(--color-primary-dark);
    }
 }
 
-.btn {
-   background-color: var(--color-primary);
-   border: none;
-   border-radius: 15rem;
-   margin: 4rem 0;
-   padding: 1.5rem;
-   text-transform: uppercase;
-   box-shadow: .4px .7px 16px rgb(21, 1, 51);
-   color: var(--color-primary-dark);
+.results {
+   padding: 2rem;
 }
 
-.btn:hover{
-   cursor: pointer;
-}
 
-.btn:active {
-   transform: translateY(3px);
-}
-
-.btn:focus {
-   outline: 0 !important;
-}

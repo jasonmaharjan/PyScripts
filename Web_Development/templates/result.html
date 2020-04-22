@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+
+      <link rel = "stylesheet" href = "./static/style_2.css">
+      <link rel="shortcut icon" href="../static/favicon.ico">
+      <title>ScrapeIT</title>
+   </head>
+   <body>
+      <header class="header">
+         Hacker News {{ test }}
+      </header>
+         <h1 class="result">
+            Results
+         </h1>
+         <div class="search">
+            <ul class="result_list">
+               {% for item in result %}
+                  <li class="result_list_item">
+                     {{ loop.index }}. &nbsp;
+                     <a href="{{ item.link }}" class="result_link">{{ item.title }}
+                        &nbsp;&nbsp; ({{ item.votes }} Votes)
+                     </a>
+                     
+                  </li>
+               {% endfor %}
+            </ul>
+         </div>
+   </body>
+</html>

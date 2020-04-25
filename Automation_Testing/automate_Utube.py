@@ -16,7 +16,7 @@ search_query = sys.argv[1]
 browser = webdriver.Chrome('./chromedriver')
 browser.maximize_window()
 
-wait = WebDriverWait(browser, 5)
+wait = WebDriverWait(browser, 10)
 presence = EC.presence_of_element_located
 visible = EC.visibility_of_element_located
 

@@ -9,8 +9,8 @@ class MainFrame(customtkinter.CTkFrame):
         # self.label.grid(row=0, column=0, padx=20, pady=20)
 
         # button widget
-        self.button = customtkinter.CTkButton(self, text="Eyes off the screen now!!", 
-                                              command=self.on_click, font=("Courier", 72),
+        self.button = customtkinter.CTkButton(self, text="Eyes off the screen now!", 
+                                              command=self.on_click, font=("Courier", 60),
                                               fg_color="transparent", text_color="gold"
                                               )
         # self.button.grid(row=1, column=1, padx=200, pady=100)

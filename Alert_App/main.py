@@ -9,8 +9,8 @@ class MainFrame(customtkinter.CTkFrame):
         # self.label.grid(row=0, column=0, padx=20, pady=20)
 
         # button widget
-        self.button = customtkinter.CTkButton(self, text="Dont tell me i remind you!", 
-                                              command=self.on_click, font=("Arial", 60),
+        self.button = customtkinter.CTkButton(self, text="Eyes off the screen now!!", 
+                                              command=self.on_click, font=("Consolas", 60),
                                               fg_color="transparent", text_color="gold"
                                               )
         # self.button.grid(row=1, column=1, padx=200, pady=100)
@@ -24,7 +24,7 @@ class MainFrame(customtkinter.CTkFrame):
         else:
             self.button.configure(state="normal")
 
-        self.after(400, self.blink)  # Blink every 500 milliseconds
+        self.after(1000, self.blink)  # Blink every 500 milliseconds
 
     def on_click(self):
         print("Closing...")
@@ -54,11 +54,13 @@ class App(customtkinter.CTk):
 
     def auto_close_timer(self):
         # Set the timer to close the window after 2 seconds
-        self.after(3000, self.on_auto_close)
+        self.after(8000, self.on_auto_close)
 
     def on_auto_close(self):
         print("Auto-closing App...")
         self.destroy()
 
 app = App()
+# this will set the ctkinter window on top of other applications
+app.attributes("-topmost", True)
 app.mainloop()
